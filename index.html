@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreamHub</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #050607;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 18px 20px;
+  background: rgba(5,6,7,.94);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.search {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 0;
+  background: #252a2d;
+  color: white;
+  font-size: 23px;
+}
+
+.menu {
+  display: flex;
+  gap: 32px;
+  padding: 0 20px 15px;
+  overflow-x: auto;
+  background: #050607;
+}
+
+.menu button {
+  background: none;
+  border: 0;
+  color: #ddd;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.menu button.active {
+  background: #33383c;
+  border: 1px solid #777;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: white;
+}
+
+.hero {
+  height: 430px;
+  padding: 35px 25px;
+  display: flex;
+  align-items: flex-end;
+  background:
+    linear-gradient(to top, #050607 5%, transparent 65%),
+    linear-gradient(135deg, #063b50, #172b38 45%, #162e25);
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.hero small {
+  color: #aaa;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.hero p {
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.watch {
+  background: white;
+  color: black;
+  border: 0;
+  padding: 13px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+section {
+  padding: 10px 20px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title h2 {
+  font-size: 22px;
+}
+
+.more {
+  border: 1px solid #777;
+  border-radius: 20px;
+  padding: 8px 15px;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.card {
+  min-width: 145px;
+  max-width: 145px;
+}
+
+.poster {
+  height: 205px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  background: linear-gradient(145deg, #183d4b, #8b4513);
+}
+
+.poster.two {
+  background: linear-gradient(145deg, #3b1465, #d46b00);
+}
+
+.poster.three {
+  background: linear-gradient(145deg, #064b45, #a58b00);
+}
+
+.poster.four {
+  background: linear-gradient(145deg, #18254e, #922b3e);
+}
+
+.card p {
+  margin: 8px 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card small {
+  color: #777;
+}
+
+.bottom {
+  position: sticky;
+  bottom: 0;
+  background: #080909;
+  border-top: 1px solid #222;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 8px;
+}
+
+.bottom button {
+  background: none;
+  border: 0;
+  color: #777;
+  font-size: 12px;
+}
+
+.bottom button.active {
+  color: #00c8ff;
+}
+
+.icon {
+  display: block;
+  font-size: 23px;
+  margin-bottom: 4px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SH</div>
+  <button class="search">⌕</button>
+</header>
+
+<nav class="menu">
+  <button class="active">Home</button>
+  <button>Filmes</button>
+  <button>Séries</button>
+  <button>Infantil</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <small>DESTAQUE • 2026</small>
+    <h1>SILO</h1>
+    <p>
+      Descubra filmes, séries e entretenimento em uma única plataforma.
+    </p>
+    <button class="watch" onclick="assistir()">▶ Assistir</button>
+  </div>
+</div>
+
+<section>
+  <div class="section-title">
+    <h2>🔥 Filmes em Alta</h2>
+    <span class="more">Ver mais</span>
+  </div>
+
+  <div class="cards">
+
+    <div class="card" onclick="abrir('Corrida Contra o Tempo')">
+      <div class="poster">
+        CORRIDA CONTRA O TEMPO
+      </div>
+      <p>Corrida Contra o Tempo</p>
+      <small>Filme • 2026</small>
+    </div>
+
+    <div class="card" onclick="abrir('Guardiões da Galáxia')">
+      <div class="poster two">
+        GUARDIÕES DA GALÁXIA
+      </div>
+      <p>Guardiões da Galáxia</p>
+      <small>Filme • 2026</small>
+    </div>
+
+    <div class="card" onclick="abrir('O Último Horizonte')">
+      <div class="poster three">
+        O ÚLTIMO HORIZONTE
+      </div>
+      <p>O Último Horizonte</p>
+      <small>Filme • 2026</small>
+    </div>
+
+    <div class="card" onclick="abrir('Código Zero')">
+      <div class="poster four">
+        CÓDIGO ZERO
+      </div>
+      <p>Código Zero</p>
+      <small>Série • 2026</small>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>📺 Séries</h2>
+    <span class="more">Ver mais</span>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="poster two">NEBULOSA</div>
+      <p>Nebulosa</p>
+      <small>Série • 2026</small>
+    </div>
+
+    <div class="card">
+      <div class="poster four">CÓDIGO ZERO</div>
+      <p>Código Zero</p>
+      <small>Série • 2026</small>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>👶 Infantil</h2>
+    <span class="more">Ver mais</span>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="poster three">PEQUENOS EXPLORADORES</div>
+      <p>Pequenos Exploradores</p>
+      <small>Infantil</small>
+    </div>
+  </div>
+</section>
+
+<nav class="bottom">
+  <button class="active">
+    <span class="icon">⌂</span>
+    Início
+  </button>
+
+  <button>
+    <span class="icon">▣</span>
+    Ao vivo
+  </button>
+
+  <button>
+    <span class="icon">🎮</span>
+    Jogos
+  </button>
+
+  <button>
+    <span class="icon">♙</span>
+    Perfil
+  </button>
+</nav>
+
+<script>
+function assistir() {
+  alert("Player de demonstração. Nesta versão, vamos conectar uma fonte de vídeo autorizada.");
+}
+
+function abrir(nome) {
+  alert("Você selecionou: " + nome);
+}
+</script>
+
+</body>
+    </html>
